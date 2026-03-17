@@ -177,6 +177,18 @@ app.get("/api/products", async (req, res) => {
   try {
     await connectToDatabase();
     const docs = await Product.find().sort({ createdAt: -1 }).lean();
+    if (!docs.length) {
+      const data = limit ? sampleProducts.slice(0, limit) : sampleProducts;
+      return res.json({
+        data,
+        featured: getFeatured(sampleProducts),
+        trending: getTrending(sampleProducts),
+        hero: getHero(sampleProducts),
+        source: "memory",
+        warning: "empty_db"
+      });
+    }
+
     const data = limit ? docs.slice(0, limit) : docs;
     return res.json({
       data,

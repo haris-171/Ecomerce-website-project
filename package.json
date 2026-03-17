@@ -9,6 +9,7 @@
     "dev": "concurrently \"npm --prefix client run dev\" \"npm run dev:server\"",
     "dev:server": "node api/index.js",
     "build": "npm --prefix client run build",
+    "postinstall": "npm --prefix client install",
     "start": "node api/index.js"
   },
   "dependencies": {

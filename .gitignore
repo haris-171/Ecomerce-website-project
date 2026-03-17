@@ -1,0 +1,9 @@
+node_modules
+client/node_modules
+client/dist
+.env
+client/.env
+.vercel
+server.log
+server.out.log
+server.err.log
